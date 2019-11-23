@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class LoginPage extends AbstractLoadable<LoginPage> {
 
   private String TITLE = "ACME demo app";
-  private String PAGE_URL = "https://demo.applitools.com/hackathon.html";
+  private String PAGE_URL = "https://demo.applitools.com/hackathon.html?showAd=true";
 
   @FindBy(css = ".logo-w")
   WebElement pageLogo;

@@ -67,4 +67,18 @@ public class TraditionalTests extends WebdriverBase {
           assertThat(beforeSort).contains(webElement);
         });
   }
+
+  @Test
+  public void canValidateCanvasData() {
+    /*
+    Unable to automate using just selenium because the canvas chart is
+    generated from the chartjs-render-monitor class and there are
+    no available elements to interact with or gather info from on the page.
+
+    This test will require a visual testing tool
+     */
+  }
+
+  @Test
+  public void canTestDynamicContent() {}
 }
