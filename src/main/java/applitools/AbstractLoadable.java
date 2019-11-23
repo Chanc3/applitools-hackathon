@@ -1,6 +1,8 @@
 package applitools;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -42,5 +44,9 @@ public abstract class AbstractLoadable<T extends LoadableComponent<T>>
 
   public WebDriverWait getWait() {
     return wait;
+  }
+
+  public boolean isDisplayed(WebElement webElement) {
+    return getWait().until(ExpectedConditions.visibilityOf(webElement)).isDisplayed();
   }
 }

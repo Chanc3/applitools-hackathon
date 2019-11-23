@@ -19,8 +19,11 @@ public class DashboardPage extends AbstractLoadable<DashboardPage> {
   @FindBy(id = "amount")
   WebElement amountColumnHeader;
 
-  @FindBy(css = ".text-right.bolder.nowrap")
-  WebElement transactionAmount;
+  @FindBy(css = "img[src='img/flashSale.gif']")
+  WebElement saleGif1;
+
+  @FindBy(css = "img[src='img/flashSale2.gif']")
+  WebElement saleGif2;
 
   public DashboardPage(WebDriver webDriver) {
     super(webDriver);
@@ -71,5 +74,13 @@ public class DashboardPage extends AbstractLoadable<DashboardPage> {
   public List<WebElement> getTableRows() {
     return getWait()
         .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("tbody>tr")));
+  }
+
+  public boolean isGifOneDisplayed() {
+    return isDisplayed(saleGif1);
+  }
+
+  public boolean isGifTwoDisplayed() {
+    return isDisplayed(saleGif2);
   }
 }

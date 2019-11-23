@@ -80,5 +80,10 @@ public class TraditionalTests extends WebdriverBase {
   }
 
   @Test
-  public void canTestDynamicContent() {}
+  public void canTestDynamicContent() {
+    LoginPage loginPage = new LoginPage(getWebDriver()).get();
+    DashboardPage dashboardPage = loginPage.loginAs("Sorting", "Test");
+    assertThat(dashboardPage.isGifOneDisplayed()).isTrue();
+    assertThat(dashboardPage.isGifTwoDisplayed()).isTrue();
+  }
 }

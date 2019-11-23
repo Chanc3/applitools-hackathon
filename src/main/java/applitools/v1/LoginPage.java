@@ -100,10 +100,6 @@ public class LoginPage extends AbstractLoadable<LoginPage> {
     return isDisplayed(linkedinIcon);
   }
 
-  public boolean isDisplayed(WebElement webElement) {
-    return getWait().until(ExpectedConditions.visibilityOf(webElement)).isDisplayed();
-  }
-
   public LoginPage clickLoginExpectingError() {
     getWait().until(ExpectedConditions.visibilityOf(loginButton)).click();
     return new LoginPage(getWebDriver()).get();
