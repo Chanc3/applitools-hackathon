@@ -19,4 +19,33 @@ public class TraditionalTests extends WebdriverBase {
     assertThat(loginPage.isFacebookIconDisplayed()).isTrue();
     assertThat(loginPage.isLinkedinIconDisplayed()).isTrue();
   }
+
+  @Test
+  public void cannotLogInWithEmptyUsernameAndPassword() {
+    LoginPage loginPage = new LoginPage(getWebDriver()).get();
+    loginPage.clickLoginExpectingError();
+    assertThat(loginPage.getAlertWarning()).isEqualTo("Both Username and Password must be present");
+  }
+
+  @Test
+  public void cannotWithEmptyPassword() {
+    LoginPage loginPage = new LoginPage(getWebDriver()).get();
+    loginPage.typeUsername("Appli");
+    loginPage.clickLoginExpectingError();
+    assertThat(loginPage.getAlertWarning()).isEqualTo("Password must be present");
+  }
+
+  @Test
+  public void cannotLoginWithEmptyUsername() {
+    LoginPage loginPage = new LoginPage(getWebDriver()).get();
+    loginPage.typePassword("Password");
+    loginPage.clickLoginExpectingError();
+    assertThat(loginPage.getAlertWarning()).isEqualTo("Username must be present");
+  }
+
+  @Test
+  public void canLogin() {
+    LoginPage loginPage = new LoginPage(getWebDriver()).get();
+    loginPage.loginAs("Hackathon", "Password");
+  }
 }

@@ -39,6 +39,9 @@ public class LoginPage extends AbstractLoadable<LoginPage> {
   @FindBy(css = "img[src='img/social-icons/linkedin.png']")
   WebElement linkedinIcon;
 
+  @FindBy(css = ".alert.alert-warning")
+  WebElement alertWarning;
+
   public LoginPage(WebDriver webDriver) {
     super(webDriver);
     PageFactory.initElements(webDriver, this);
@@ -99,5 +102,29 @@ public class LoginPage extends AbstractLoadable<LoginPage> {
 
   public boolean isDisplayed(WebElement webElement) {
     return getWait().until(ExpectedConditions.visibilityOf(webElement)).isDisplayed();
+  }
+
+  public LoginPage clickLoginExpectingError() {
+    getWait().until(ExpectedConditions.visibilityOf(loginButton)).click();
+    return new LoginPage(getWebDriver()).get();
+  }
+
+  public String getAlertWarning() {
+    return getWait().until(ExpectedConditions.visibilityOf(alertWarning)).getText();
+  }
+
+  public void typeUsername(String text) {
+    getWait().until(ExpectedConditions.visibilityOf(usernameInput)).sendKeys(text);
+  }
+
+  public void typePassword(String text) {
+    getWait().until(ExpectedConditions.visibilityOf(passwordInput)).sendKeys(text);
+  }
+
+  public DashboardPage loginAs(String username, String password) {
+    typeUsername(username);
+    typePassword(password);
+    getWait().until(ExpectedConditions.visibilityOf(loginButton)).click();
+    return new DashboardPage(getWebDriver()).get();
   }
 }
