@@ -2,6 +2,10 @@ package applitools.v1;
 
 import applitools.WebdriverBase;
 import org.junit.Test;
+import org.openqa.selenium.WebElement;
+
+import java.util.Comparator;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -47,5 +51,20 @@ public class TraditionalTests extends WebdriverBase {
   public void canLogin() {
     LoginPage loginPage = new LoginPage(getWebDriver()).get();
     loginPage.loginAs("Hackathon", "Password");
+  }
+
+  @Test
+  public void canSortDashboardTableByAmount() {
+    LoginPage loginPage = new LoginPage(getWebDriver()).get();
+    DashboardPage dashboardPage = loginPage.loginAs("Sorting", "Test");
+    List<WebElement> beforeSort = dashboardPage.getTableRows();
+    dashboardPage.sortByAmount();
+    List<WebElement> afterSort = dashboardPage.getTableRows();
+    List<Double> amounts = dashboardPage.getRecentTransactionAmounts();
+    assertThat(amounts).isSortedAccordingTo(Comparator.naturalOrder());
+    afterSort.forEach(
+        webElement -> {
+          assertThat(beforeSort).contains(webElement);
+        });
   }
 }
