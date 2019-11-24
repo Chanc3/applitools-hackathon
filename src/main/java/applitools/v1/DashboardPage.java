@@ -25,6 +25,9 @@ public class DashboardPage extends AbstractLoadable<DashboardPage> {
   @FindBy(css = "img[src='img/flashSale2.gif']")
   WebElement saleGif2;
 
+  @FindBy(id = "showExpensesChart")
+  WebElement compareExpenseLink;
+
   public DashboardPage(WebDriver webDriver) {
     super(webDriver);
     PageFactory.initElements(webDriver, this);
@@ -82,5 +85,10 @@ public class DashboardPage extends AbstractLoadable<DashboardPage> {
 
   public boolean isGifTwoDisplayed() {
     return isDisplayed(saleGif2);
+  }
+
+  public HackathonChartPage clickCompareExpenses() {
+    getWait().until(ExpectedConditions.visibilityOf(compareExpenseLink)).click();
+    return new HackathonChartPage(getWebDriver()).get();
   }
 }
