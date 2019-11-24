@@ -11,7 +11,7 @@ public class HackathonChartPage extends AbstractLoadable<HackathonChartPage> {
 
   private String TITLE = "ACME demo app";
 
-  private String PAGE_URL = "https://demo.applitools.com/hackathonChart.html";
+  private String PAGE_URL = "https://demo.applitools.com/hackathonChartV2.html";
 
   @FindBy(id = "addDataset")
   WebElement addDatasetButton;

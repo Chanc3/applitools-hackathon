@@ -14,7 +14,7 @@ import java.util.List;
 public class DashboardPage extends AbstractLoadable<DashboardPage> {
 
   private String TITLE = "ACME demo app";
-  private String PAGE_URL = "https://demo.applitools.com/hackathonApp.html?showAd=true";
+  private String PAGE_URL = "https://demo.applitools.com/hackathonAppV2.html?showAd=true";
 
   @FindBy(id = "amount")
   WebElement amountColumnHeader;
