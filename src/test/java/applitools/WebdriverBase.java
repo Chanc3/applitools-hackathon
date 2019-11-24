@@ -1,5 +1,6 @@
 package applitools;
 
+import com.applitools.eyes.BatchInfo;
 import com.applitools.eyes.selenium.Eyes;
 import com.google.common.base.Preconditions;
 import org.junit.After;
@@ -43,6 +44,7 @@ public class WebdriverBase {
         }
         eyes = new Eyes();
         eyes.setApiKey(properties.getProperty("applitools.api.key"));
+        eyes.setBatch(new BatchInfo("Hackathon"));
     }
 
     @After
