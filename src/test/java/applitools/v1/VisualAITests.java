@@ -58,6 +58,15 @@ public class VisualAITests extends WebdriverBase {
     }
 
     @Test
+    public void canValidateAdditionalCanvasData() {
+        LoginPage loginPage = new LoginPage(getWebDriver()).get();
+        DashboardPage dashboardPage = loginPage.loginAs("Hackathon", "Password");
+        HackathonChartPage hackathonChartPage = dashboardPage.clickCompareExpenses();
+        hackathonChartPage.clickAddDataset();
+        validateWindow();
+    }
+
+    @Test
     public void canTestDynamicContent() {
         LoginPage loginPage = new LoginPage(getWebDriver()).get();
         loginPage.loginAs("Sorting", "Test");
